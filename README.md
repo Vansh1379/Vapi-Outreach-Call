@@ -266,14 +266,3 @@ VAPI Outreach calls/
 ### All Calls
 ![All Calls](ss/allCalls.png)
 
-## 📄 License
-
-ISC
-
-## 🤝 Contributing
-
-Feel free to submit issues and enhancement requests!
-
----
-
-**Built with ❤️ using VAPI and TypeScript**
