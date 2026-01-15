@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// Health check endpoint
+
 router.get("/health", (req, res) => {
   res.json({
     status: "healthy",
@@ -10,7 +10,6 @@ router.get("/health", (req, res) => {
   });
 });
 
-// API info endpoint
 router.get("/", (req, res) => {
   res.json({
     name: "VAPI Outreach Call API",
