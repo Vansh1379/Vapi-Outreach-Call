@@ -2,14 +2,14 @@
 
 AI-powered automated outbound calling system built with TypeScript and VAPI.
 
-## 🚀 Features
+##  Features
 
-- ✅ Make automated outbound calls with AI assistants
-- ✅ Track call status and details in real-time
-- ✅ Webhook support for call events
-- ✅ RESTful API with TypeScript
-- ✅ Built-in health monitoring
-- ✅ Comprehensive error handling
+-  Make automated outbound calls with AI assistants
+-  Track call status and details in real-time
+-  Webhook support for call events
+-  RESTful API with TypeScript
+-  Built-in health monitoring
+-  Comprehensive error handling
 
 ## 📋 Prerequisites
 
