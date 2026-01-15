@@ -1,13 +1,14 @@
-const express = require("express");
-const axios = require("axios");
+import express, { Request, Response } from "express";
+import axios from "axios";
+
 const router = express.Router();
 
 const VAPI_URL = "https://api.vapi.ai/call";
 
-// Make an outbound call
-router.post("/outbound", async (req, res) => {
+// this willmake an outbound call
+router.post("/outbound", async (req: Request, res: Response) => {
   const { customerNumber } = req.body;
-  
+
   if (!customerNumber) {
     return res.status(400).json({ error: "customerNumber required" });
   }
@@ -31,7 +32,7 @@ router.post("/outbound", async (req, res) => {
       message: "Call initiated successfully",
       data: response.data,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({
       success: false,
       error: error.response?.data || error.message,
@@ -39,8 +40,8 @@ router.post("/outbound", async (req, res) => {
   }
 });
 
-// Get call details by ID
-router.get("/:callId", async (req, res) => {
+// Get call info
+router.get("/:callId", async (req: Request, res: Response) => {
   const { callId } = req.params;
 
   try {
@@ -54,7 +55,7 @@ router.get("/:callId", async (req, res) => {
       success: true,
       data: response.data,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({
       success: false,
       error: error.response?.data || error.message,
@@ -63,7 +64,7 @@ router.get("/:callId", async (req, res) => {
 });
 
 // List all calls
-router.get("/", async (req, res) => {
+router.get("/", async (req: Request, res: Response) => {
   try {
     const response = await axios.get(VAPI_URL, {
       headers: {
@@ -75,7 +76,7 @@ router.get("/", async (req, res) => {
       success: true,
       data: response.data,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({
       success: false,
       error: error.response?.data || error.message,
@@ -83,4 +84,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

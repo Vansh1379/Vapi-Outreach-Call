@@ -1,8 +1,8 @@
-const express = require("express");
+import express, { Request, Response } from "express";
+
 const router = express.Router();
 
-
-router.get("/health", (req, res) => {
+router.get("/health", (req: Request, res: Response) => {
   res.json({
     status: "healthy",
     timestamp: new Date().toISOString(),
@@ -10,7 +10,7 @@ router.get("/health", (req, res) => {
   });
 });
 
-router.get("/", (req, res) => {
+router.get("/", (req: Request, res: Response) => {
   res.json({
     name: "VAPI Outreach Call API",
     version: "1.0.0",
@@ -31,4 +31,4 @@ router.get("/", (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

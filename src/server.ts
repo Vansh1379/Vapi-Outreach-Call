@@ -1,22 +1,21 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const helmet = require("helmet");
+import express, { Request, Response, NextFunction } from "express";
+import cors from "cors";
+import helmet from "helmet";
+import dotenv from "dotenv";
+import callsRouter from "./routes/calls.js";
+import webhooksRouter from "./routes/webhooks.js";
+import indexRouter from "./routes/index.js";
 
-// Import routes
-const callsRouter = require("./routes/calls");
-const webhooksRouter = require("./routes/webhooks");
-const indexRouter = require("./routes/index");
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-// Request logging middleware
+// Request logging
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
   next();
@@ -25,8 +24,6 @@ app.use((req, res, next) => {
 app.use("/api", indexRouter);
 app.use("/api/calls", callsRouter);
 app.use("/api/webhooks", webhooksRouter);
-
-
 
 app.use((req, res) => {
   res.status(404).json({
@@ -45,7 +42,7 @@ app.use((req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error("Error:", err);
   res.status(500).json({
     error: "Internal Server Error",
@@ -53,9 +50,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server
 app.listen(PORT, () => {
-  console.log(`🚀 VAPI Outreach Server running on port ${PORT}`);
-  console.log(`📞 Ready to make calls!`);
-  console.log(`📡 API Documentation: http://localhost:${PORT}/api`);
+  console.log(` VAPI Outreach Server running on port ${PORT}`);
+  console.log(` Ready to make calls!`);
 });
