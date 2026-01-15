@@ -40,6 +40,37 @@ router.post("/outbound", async (req: Request, res: Response) => {
   }
 });
 
+// Get call status
+router.get("/status/:callId", async (req: Request, res: Response) => {
+  const { callId } = req.params;
+
+  try {
+    const response = await axios.get(`${VAPI_URL}/${callId}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.VAPI_TOKEN}`,
+      },
+    });
+
+    const callData = response.data;
+    
+    res.json({
+      success: true,
+      callId: callData.id,
+      status: callData.status,
+      startedAt: callData.startedAt,
+      endedAt: callData.endedAt,
+      duration: callData.duration,
+      cost: callData.cost,
+      phoneNumber: callData.customer?.number,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      error: error.response?.data || error.message,
+    });
+  }
+});
+
 // Get call info
 router.get("/:callId", async (req: Request, res: Response) => {
   const { callId } = req.params;

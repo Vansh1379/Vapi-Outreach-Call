@@ -34,6 +34,7 @@ app.use((req, res) => {
       "GET /api/health",
       "POST /api/calls/outbound",
       "GET /api/calls",
+      "GET /api/calls/status/:callId",
       "GET /api/calls/:callId",
       "POST /api/webhooks/call-status",
       "POST /api/webhooks/assistant-message",

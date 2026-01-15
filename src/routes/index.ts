@@ -18,6 +18,7 @@ router.get("/", (req: Request, res: Response) => {
       calls: {
         "POST /api/calls/outbound": "Make an outbound call",
         "GET /api/calls": "List all calls",
+        "GET /api/calls/status/:callId": "Get call status",
         "GET /api/calls/:callId": "Get call details",
       },
       webhooks: {
