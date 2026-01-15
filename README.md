@@ -44,10 +44,10 @@ npm start
 ## Screenshots
 
 ### Outbound Call
-[Screenshot here]
+![Outbound Call](ss/outBoundCall.png)
 
 ### Call Details
-[Screenshot here]
+![Call Details](ss/callID.png)
 
-### API Info
-[Screenshot here]
+### All Calls
+![All Calls](ss/allCalls.png)
